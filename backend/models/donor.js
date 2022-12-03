@@ -14,9 +14,12 @@ Donor.init({
    },
   type: {type: DataTypes.ENUM("Individual","Restaurant","Hostel","Food_Caterer","Ngo","Other"), defaultValue: "Other"},        
 
-  location: {type: DataTypes.STRING(100),
+  latitude: {type: DataTypes.FLOAT,
              allowNull: false
           },
+  longitude: {type: DataTypes.FLOAT,
+            allowNull: false
+         },
 
   timestampCreated: { type: DataTypes.BIGINT, defaultValue: Date.now},
 

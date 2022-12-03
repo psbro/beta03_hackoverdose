@@ -1,30 +1,74 @@
-
-
 import React from 'react'
+import { useState } from 'react';
+import "./form.css"
+
 import {
     ref,
-    uploadBytesResumable
-    } from "firebase/storage";
+    uploadBytesResumable, getDownloadURL
+} from "firebase/storage";
+import storage from '../../../firebase/firebaseConfig';
 
-import { storage } from "../../../firebase/firebaseConfig";
 
 export const DonorForm = () => {
-    const [file, setFile] = React.useState("");
+    const [file, setFile] = useState("");
+    const [imgurl,setimgurl]=useState('');
+    const [longitude,setlongitude]=useState('')
+    const [latitude,setlatitude]=useState('')
 
-// Handles input change event and updates state
-function handleChange(event) {
-setFile(event.target.files[0]);
-function handleUpload() {
-    if (!file) {
-    alert("Please choose a file first!")
+    // progress
+    const [percent, setPercent] = useState(0);
+
+    // Handle file upload event and update state
+    function handleChange(event) {
+        setFile(event.target.files[0]);
     }
+    navigator.geolocation.getCurrentPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        setlatitude(position.coords.latitude)
+        console.log("Longitude is :", position.coords.longitude);
+        setlatitude(position.coords.longitude)
+
+    });
+    const handlesubmit=()=>{
+        
     }
-    const storageRef = ref(storage, `/files/${file.name}`);
-    
-}
+
+    const handleUpload = () => {
+        if (!file) {
+            alert("Please upload an image first!");
+        }
+
+        const storageRef = ref(storage, `/files/${file.name}`);
+
+        // progress can be paused and resumed. It also exposes progress updates.
+        // Receives the storage reference and the file to upload.
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const percent = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+
+                // update progress
+                setPercent(percent);
+            },
+            (err) => console.log(err),
+            () => {
+                // download url
+                getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                    setimgurl(url)
+                    console.log(url);
+                });
+            }
+        );
+    };
+
     return (
         <div className='donorForm'>
-            <form>
+            <div className='form-css'>
+
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label for="inputEmail4">Name of organization</label>
@@ -36,9 +80,9 @@ function handleUpload() {
                     </div>
                 </div>
                 <div className="form-group">
-                <div className="form-group col-md-6">
-                    <label for="inputAddress">Address</label>
-                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                    <div className="form-group col-md-6">
+                        <label for="inputAddress">Address</label>
+                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                     </div>
 
                 </div>
@@ -107,14 +151,26 @@ function handleUpload() {
                             <option>...</option>
                         </select>
                     </div>
-                    <div className="form-group col-md-4">
-                        <label for="inputZip">Upload your food image</label>
-                        <input type="file" accept="image/*" onChange={handleChange} className="form-control" id="inputZip" />
+                    <div>
+                        <input type="file" onChange={handleChange} accept="/image/*" />
+                        <button onClick={handleUpload}>Upload to Firebase</button>
+                        {/* <p>{percent} "% done"</p> */}
+                        
+
+                        {imgurl && <>
+                        <br />
+                        <br />
+                        <img className='image-height' src={imgurl} alt="" />
+                        
+                        </>}
                     </div>
+
+
                 </div>
                 <br />
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                <button type="submit" className="btn btn-primary" onClick={handleUpload}>Submit</button>
+            </div>
+
         </div>
     )
 }

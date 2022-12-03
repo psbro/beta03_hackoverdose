@@ -15,10 +15,8 @@ import axios from 'axios'
 import './Home.scss'
 
 const Home = () => {
-  const [active,setactive]=React.useState('')
-
-  
-
+  const [active,setactive]=React.useState('');
+  const [tableactive,settable]=React.useState('hide')
   
   
   return (
@@ -33,7 +31,7 @@ const Home = () => {
             <Stack spacing={2} direction="row" className='btn-button'>
 
               <Button variant="contained" onClick={()=>setactive("donor")}>Want to donate?</Button>
-              <Button variant="contained">Get Food</Button>
+              <Button variant="contained" onClick={()=>setactive("receiver")}>Get Food</Button>
 
 
             </Stack>
@@ -48,6 +46,7 @@ const Home = () => {
           </div>
           <div>
             {active=="donor" && <DonorForm />}
+            {active=="receiver" && <ReceiverForm />}
 
 
           </div>
@@ -57,10 +56,10 @@ const Home = () => {
             <Chart title="Last 2 quarters (Revenue)" aspect={2 / 1} />
           </div> */}
 
-          <div className="listContainer">
+          {/* <div className="listContainer">
             <div className="listTitle">Lastest Transactions</div>
             <TableX />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

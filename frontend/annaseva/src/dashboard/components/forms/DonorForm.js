@@ -1,32 +1,130 @@
-
-
 import React from 'react'
+import { useState } from 'react';
+import "./form.css"
+
+import {
+    ref,
+    uploadBytesResumable, getDownloadURL
+} from "firebase/storage";
+import storage from '../../../firebase/firebaseConfig';
+import axios from 'axios';
+import { useEffect } from 'react';
+import  TableX from '../Table/Table';
+import Button from '@mui/material/Button';
+
+
+
+
 
 export const DonorForm = () => {
+  const [tableactive,settable]=React.useState('hide');
+  const [donorNo,setdonorNo]=React.useState(0)
+
+    const [file, setFile] = useState("");
+    const [imgurl,setimgurl]=useState('');
+    const [longitude,setlongitude]=useState(0)
+    const [latitude,setlatitude]=useState(0)
+    const [name,setname]=useState('');
+    const [quantity,setquantity]=useState(0);
+    const [type,settype]=useState("Other");
+    
+
+
+    // progress
+    const [percent, setPercent] = useState(0);
+
+    // Handle file upload event and update state
+    function handleChange(event) {
+        setFile(event.target.files[0]);
+    }
+    const locationfinder=()=>{
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            setlatitude(position.coords.latitude)
+            console.log("Longitude is :", position.coords.longitude);
+            setlongitude(position.coords.longitude)
+    
+        });
+    }
+    const handlesubmit=()=>{
+        let data={
+            name:name,
+            type:type,
+            link1:imgurl,
+            latitude:latitude,
+            longitude:longitude,
+            userNo:1,
+            quantity:parseInt(quantity)
+        }
+
+        axios.post("http://localhost:8000/donor/create",data).then((response)=>{
+            console.log(response.data.donorNo)
+            setdonorNo(response.data.donorNo)
+            settable("show")
+        }).catch((err)=>{
+            console.log(err)
+
+        }) 
+        
+    }
+
+    const handleUpload = () => {
+        if (!file) {
+            alert("Please upload an image first!");
+        }
+
+        const storageRef = ref(storage, `/files/${file.name}`);
+
+        // progress can be paused and resumed. It also exposes progress updates.
+        // Receives the storage reference and the file to upload.
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const percent = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+
+                // update progress
+                setPercent(percent);
+            },
+            (err) => console.log(err),
+            () => {
+                // download url
+                getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                    setimgurl(url)
+                    console.log(url);
+                });
+            }
+        );
+    };
+    useEffect(() => {
+        locationfinder()
+    }, '')
+
     return (
+        <>
         <div className='donorForm'>
-            <form className='form-css'>
+            <div className='form-css'>
 
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label for="inputEmail4">Name of organization</label>
-                        <input type="text" className="form-control" id="inputEmail4" placeholder="Name of organization" />
+                        <input type="text" className="form-control" id="inputEmail4" onChange={(event)=>setname(event.target.value)} placeholder="Name of organization" />
                     </div>
                     <div className="form-group col-md-6">
                         <label for="inputPassword4">quantity</label>
-                        <input type="number" className="form-control" id="inputPassword4" placeholder="Quantity" />
+                        <input type="number" className="form-control" id="inputPassword4" onChange={(event)=>setquantity(event.target.value)} placeholder="Quantity" />
                     </div>
                 </div>
-                <div className="form-group">
-                    <div className="form-group col-md-6">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                    </div>
-
-                </div>
-
+                
+                {/* <div className="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+    </div> */}
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label> <br />
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onChange={(event) => settype(event.target.value)}>
                     <option selected>Choose...</option>
                     <option value="Individual">Individual</option>
                     <option value="Restaurant">Restaurant</option>
@@ -38,7 +136,7 @@ export const DonorForm = () => {
 
 
                 <div className="form-row">
-                    <div className="form-group col-md-6">
+                    {/* <div className="form-group col-md-6">
                         <label for="inputCity">City</label>
                         <input type="text" className="form-control" id="inputCity" />
                     </div>
@@ -85,17 +183,40 @@ export const DonorForm = () => {
                             <option selected>Choose...</option>
                             <option>...</option>
                         </select>
-                    </div>
-                    <div className="form-group col-md-4">
-                        <label for="inputZip">Upload your food image</label>
-                        <input type="file" className="form-control" id="inputZip" />
+                    </div> */}
+                    <div>
+                        <input type="file" onChange={handleChange} accept="/image/*" />
+                        <button onClick={handleUpload}>Upload to Firebase</button>
+                        {/* <p>{percent} "% done"</p> */}
+                        
+
+                        {imgurl && <>
+                        <br />
+                        <br />
+                        <img className='image-height' src={imgurl} alt="" />
+                        
+                        </>}
                     </div>
 
 
                 </div>
                 <br />
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-    </div>
+                <button type="submit" className="btn btn-primary" onClick={handlesubmit}>Submit</button>
+            </div>
+
+        </div>
+        <div className="listContainer">
+        {tableactive=="show" &&
+         <>
+         <div className="listTitle">Lastest Transactions</div>
+            <TableX latitude={latitude} longitude={longitude} donorNo={donorNo} /></>
+         }
+         </div>
+          
+
+        </>
+        
+
+
     )
 }

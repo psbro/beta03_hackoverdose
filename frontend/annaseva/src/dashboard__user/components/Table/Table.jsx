@@ -89,6 +89,7 @@ const TableX = () => {
                             <TableCell className='tableCell'>quantity</TableCell>
                             <TableCell className='tableCell'>type</TableCell>
                             <TableCell className='tableCell'>location</TableCell>
+                            <TableCell className='tableCell'>Food photo</TableCell>
                             {/* <TableCell className='tableCell'>Payment Method</TableCell> */}
                             <TableCell className='tableCell'>Status</TableCell>
                         </TableRow>
@@ -105,7 +106,8 @@ const TableX = () => {
                                 
                                 <TableCell className='tableCell'>{row.type}</TableCell>
                                 <TableCell className='tableCell'>{row.location}</TableCell>
-                                {/* <TableCell className='tableCell'>{row.method}</TableCell> */}
+                                <TableCell className='tableCell'>
+                                    <a href={row.link1}>Photo</a></TableCell>
                                 <TableCell className='tableCell'>
                                     {row.isVerify=="No" && <span className={`status Pending`}>Pending</span>}
                                     {row.isVerify=="Yes" && <span className={`status Approved`}>Approved</span>}
@@ -116,6 +118,8 @@ const TableX = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+            
         </div>
     )
 }

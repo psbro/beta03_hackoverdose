@@ -22,6 +22,7 @@ User.init({
 
   timestampLastLogin: { type: DataTypes.BIGINT, defaultValue: Date.now},
   mobile: {type: DataTypes.STRING(10)},
+  isAdmin:{type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"} 
 
 
 }, {

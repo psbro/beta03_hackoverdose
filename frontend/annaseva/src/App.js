@@ -12,8 +12,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<Home />} />
-        <Route exact path="/dashboard/admin" element={<Dashboard />} />
-        <Route exact path="/dashboard/user" element={<Dashboard__user />} />
+        <Route exact path="/dashboard/user" element={<Dashboard />} />
+        <Route exact path="/dashboard/admin" element={<Dashboard__user />} />
         <Route exact path="/auth" element={<Auth />} />
         <Route exact path="/predictor_form" element={<PredictorForm />} />
       </Routes>
