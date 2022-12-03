@@ -9,13 +9,7 @@ User.init({
   
   email: {type: DataTypes.STRING(500),
           allowNull: false, 
-          unique: true,
-          validate: {
-            isEmail:{
-               args: true,
-               msg: "invalid email"
-            }
-          }},
+          unique: true},
   password: {type: DataTypes.STRING(100),
              allowNull: false
           },
@@ -24,10 +18,6 @@ User.init({
 
   name: { type: DataTypes.STRING(100), 
           allowNull:false,
-          validate: { is: {
-            args:/^[a-zA-Z ]{5,}$/i,
-            msg: "invalid name"
-          }}
          },
 
   timestampLastLogin: { type: DataTypes.BIGINT, defaultValue: Date.now},

@@ -14,7 +14,7 @@ import { Pending } from '@mui/icons-material';
 
 
 
-const TableX = () => {
+const TableX2 = () => {
 
     const rows = [
         {
@@ -70,7 +70,7 @@ const TableX = () => {
     ];
     const [data, setData] = React.useState([]);
     const loadData = async () => {
-        let info = await axios.get(`http://localhost:8000/donor/all`);
+        let info = await axios.get(`http://localhost:8000/receiver/all`);
         setData(info.data);
         console.log(data)
     }
@@ -120,4 +120,4 @@ const TableX = () => {
     )
 }
 
-export default TableX;
+export default TableX2;

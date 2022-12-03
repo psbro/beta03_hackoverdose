@@ -9,7 +9,7 @@ const sequelize = require('./config/db')
 
 
 var app = express();
-
+   
 const port = 8000;
 
 app.use(cors()); 
