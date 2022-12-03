@@ -1,24 +1,33 @@
-import React from 'react'
-import './Home.scss'
-import Nav from './components/Nav'
-import Main from './pages/Main'
-import Aim from './pages/Aim'
-import Gallery from './pages/Gallery'
-import Predictor from './pages/Predictor'
-import Footer from './components/Footer'
-import About from './pages/About'
+import React from "react";
+import "./Home.scss";
+import Nav from "./components/Nav";
+import Main from "./pages/Main";
+import Aim from "./pages/Aim";
+import Gallery from "./pages/Gallery";
+import Predictor from "./pages/Predictor";
+import Footer from "./components/Footer";
+import About from "./pages/About";
+import { Element } from "react-scroll";
 
 const Home = () => {
-    return (
-        <>
-            <Nav />
-            <Main />
-            <Aim />
-            <Gallery />
-            <Predictor/>
-            <Footer />
-        </>
-    )
-}
+  return (
+    <>
+      <Nav />
+      <Main />
+      <Element id="section1" name="section1">
+        <Aim />
+      </Element>
+      <Element id="section2" name="section2">
+        <Gallery />
+      </Element>
+      <Element id="section3" name="section3">
+        <Predictor />
+      </Element>
+      <Element id="section4" name="section4">
+        <Footer />
+      </Element>
+    </>
+  );
+};
 
-export default Home
+export default Home;
