@@ -10,69 +10,112 @@ import { FiMail } from 'react-icons/fi'
 
 const Footer = () => {
     return (
-        <>
-            <Foot_Details>
-                <div className="footer_container">
-                    <div className="right_footer">
-                        <span>
-                            <h1>GET LATEST UPDATES</h1>
-                        </span>
+      <>
+        <Foot_Details>
+          <div className="footer_container">
+            <div className="right_footer">
+              <span>
+                <h1>GET LATEST UPDATES</h1>
+              </span>
 
-                        <div className="iform">
-                            <form>
-                                <input type="email" id="sub_email" placeholder='YOUR E-MAIL' style={{ opacity: "1" }} />
-                                <button type='submit' id="sub_submit" style={{ opacity: "1" }}>SUBSCRIBE</button>
-                            </form>
+              <div className="iform">
+                <form>
+                  <input
+                    type="email"
+                    id="sub_email"
+                    placeholder="YOUR E-MAIL"
+                    style={{ opacity: "1" }}
+                  />
+                  <button
+                    type="submit"
+                    id="sub_submit"
+                    style={{ opacity: "1" }}
+                  >
+                    SUBSCRIBE
+                  </button>
+                </form>
 
-                            <div className="social">
-                                <li><a href="#"><BsFacebook /></a></li>
-                                <li><a href="#"><BsInstagram /></a></li>
-                                <li><a href="#"><BsLinkedin /></a></li>
-                                <li><a href="#"><BsWordpress /></a></li>
-                                <li><a href="#"><BsTwitter /></a></li>
-                            </div>
-                        </div>
-                    </div>
+                <div className="social">
+                  <li>
+                    <a href="#">
+                      <BsFacebook />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <BsInstagram />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <BsLinkedin />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <BsWordpress />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <BsTwitter />
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </div>
 
-                    <div className="left_footer">
-                        <div className="content">
-                            <div className="adress">
-                                <h3>ANNASEVA</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id mollitia expedita velit voluptatum ex magnam non neque aut atque delectus animi voluptatibus iusto blanditiis hic, voluptate quis? Perspiciatis, iste sunt.
-                                </p>
-                            </div>
-
-                            <div className="contact">
-                                <h3>CONTACT</h3>
-                                <div className="link">
-                                    <FiMail style={{ color: "#FFF", fontSize: "1.5rem", cursor: "pointer" }} />
-                                    <a href="#">annaseva@gmail.com</a></div>
-
-                            </div>
-                        </div>
-                        <div className="quicklinks">
-                            <h3>QUICK LINKS</h3>
-                            <div className="main_links">
-                                <ul>
-                                    <li><a href='#'>About</a></li>
-                                    <li><a href='#'>Events</a></li>
-                                    <li><a href='#'>Gallery</a></li>
-                                    <li><a href='#'>Team</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            <div className="left_footer">
+              <div className="content">
+                <div className="adress">
+                  <h3>ANNASEVA</h3>
+                  <p>
+                    Local governments and nonprofits can manage food recovery
+                    programs in their community through the Waste No Food app.
+                    We’ll provide the technology infrastructure to enable
+                    real-time food donation. Waste No Food enables the food
+                    industry to donate excess food to hungry people
+                  </p>
                 </div>
 
-
-                
-
-            </Foot_Details>
-
-
-        </>
-    )
+                <div className="contact">
+                  <h3>CONTACT</h3>
+                  <div className="link">
+                    <FiMail
+                      style={{
+                        color: "#FFF",
+                        fontSize: "1.5rem",
+                        cursor: "pointer",
+                      }}
+                    />
+                    <a href="#">annaseva@gmail.com</a>
+                  </div>
+                </div>
+              </div>
+              <div className="quicklinks">
+                <h3>QUICK LINKS</h3>
+                <div className="main_links">
+                  <ul>
+                    <li>
+                      <a href="#">ABOUT</a>
+                    </li>
+                    <li>
+                      <a href="#">GALLERY</a>
+                    </li>
+                    <li>
+                      <a href="#">PREDICT</a>
+                    </li>
+                    <li>
+                      <a href="#">CONTACT</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Foot_Details>
+      </>
+    );
 }
 
 const Foot_Details = styled(motion.div)`

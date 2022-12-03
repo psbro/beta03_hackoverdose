@@ -17,3 +17,15 @@
    margin-right: auto;
    margin-top: 3rem;
 }
+
+.btn__pre a {
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+.btn__pre a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+

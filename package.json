@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "firebase": "^9.14.0",
+    "react-bootstrap": "^2.6.0",
     "react-circular-progressbar": "^2.1.0",
     "recharts": "^2.1.16"
   },

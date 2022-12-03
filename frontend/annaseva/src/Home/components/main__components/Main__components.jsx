@@ -5,6 +5,8 @@ import Banner from "../../assets/banner3.jpg";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 const theme = createTheme({
   status: {
     danger: "#e53e3e",
@@ -45,8 +47,23 @@ const Main_components = () => {
           </span>
 
           <div className="btn">
-            <button className="btn1">Donate Food</button>
-            <button className="btn1">Know More</button>
+            <button className="btn1">
+              <Link to="/auth" style={{ color: "white" }}>
+                Donate Food
+              </Link>
+            </button>
+            <button className="btn1">
+              <ScrollLink
+                className="scroll"
+                to="section4"
+                spy={true}
+                smooth={true}
+                duration={500}
+                style={{ color: "white" }}
+              >
+                Know More
+              </ScrollLink>
+            </button>
           </div>
         </div>
       </Index_Home>
@@ -117,7 +134,7 @@ const Index_Home = styled(motion.div)`
 
   .home-content {
     position: absolute;
-    top: 55%;
+    top: 40%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -142,6 +159,7 @@ const Index_Home = styled(motion.div)`
       text-align: center;
       width: 50%;
       box-shadow: none;
+      flex-wrap: wrap;
 
       .btn1 {
         text-decoration: none;
@@ -157,6 +175,14 @@ const Index_Home = styled(motion.div)`
         background-color: var(--main-color);
         border-radius: 10px;
         margin: 2rem 0 0 0;
+
+        @media (max-width: 435px) {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 400px) {
+          width: 220px;
+        }
 
         &:hover {
           opacity: 0.9;
@@ -174,6 +200,10 @@ const Index_Home = styled(motion.div)`
         color: var(--secondary-color);
         text-align: end;
         font-size: 25px;
+
+        @media (max-width: 500px) {
+          text-align: center;
+        }
       }
 
       .main-heading {

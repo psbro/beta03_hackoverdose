@@ -17,7 +17,7 @@ import {
   MDBCheckbox,
 } from "mdb-react-ui-kit";
 import { createdata__create, createdata__login } from "../api/user__api";
-import Nav from "../Home/components/Nav"
+import Nav2 from "../Home/components/Nav2"
 import { Link } from 'react-router-dom';
 
 function Auth() {
@@ -126,8 +126,10 @@ function Auth() {
   };
 
   return (
+    <>
+    <Nav2/>
     <div className="flex_box" style={{marginTop: "70px"}}>
-      <Nav/>
+      
       <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
         <MDBTabs
           pills
@@ -348,6 +350,7 @@ function Auth() {
         </MDBTabsContent>
       </MDBContainer>
     </div>
+    </>
   );
 }
 

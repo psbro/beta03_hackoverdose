@@ -109,7 +109,7 @@ const Main_Navbar = styled(motion.div)`
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
-  overflow-x: hidden;
+  overflow: hidden;
 
   .logo {
     position: relative;
@@ -153,12 +153,12 @@ const Main_Navbar = styled(motion.div)`
         font-size: var(--sub-heading-size);
         font-family: "Saira Condensed", sans-serif;
         margin-left: auto;
-        color: var(--white);
-        background-color: var(--secondary-color);
+        background-color: #8d775f;
         width: 180px;
         height: 40px;
         border: none;
         border-radius: 5px;
+        color: #fff;
       }
     }
 
