@@ -1,11 +1,12 @@
 import React from 'react'
+import Home from "./pages/home/Home"
 
-const Dashboard = () => {
+const dashboard = () => {
   return (
     <div>
-      dashboard
+      <Home />
     </div>
   )
 }
 
-export default Dashboard
+export default dashboard
