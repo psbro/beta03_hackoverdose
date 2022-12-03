@@ -5,7 +5,7 @@ import React from 'react'
 export const DonorForm = () => {
     return (
         <div className='donorForm'>
-            <form className='form-css'>
+            <div className='form-css'>
 
                 <div className="form-row">
                     <div className="form-group col-md-6">
@@ -96,6 +96,6 @@ export const DonorForm = () => {
                 <br />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-    </div>
+        </>
     )
 }

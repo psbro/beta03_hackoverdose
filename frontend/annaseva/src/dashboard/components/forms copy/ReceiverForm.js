@@ -2,11 +2,10 @@
 
 import React from 'react'
 
-export const DonorForm = () => {
+export const ReceiverForm = () => {
     return (
         <div className='donorForm'>
-            <form className='form-css'>
-
+            <form>
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label for="inputEmail4">Name of organization</label>
@@ -18,13 +17,13 @@ export const DonorForm = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <div className="form-group col-md-6">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                    </div>
-
+                    <label for="inputAddress">Address</label>
+                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                 </div>
-
+                {/* <div className="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+    </div> */}
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label> <br />
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                     <option selected>Choose...</option>
@@ -86,16 +85,14 @@ export const DonorForm = () => {
                             <option>...</option>
                         </select>
                     </div>
-                    <div className="form-group col-md-4">
-                        <label for="inputZip">Upload your food image</label>
-                        <input type="file" className="form-control" id="inputZip" />
-                    </div>
-
-
+                    {/* <div className="form-group col-md-2">
+                        <label for="inputZip">Pincode</label>
+                        <input type="text" className="form-control" id="inputZip" />
+                    </div> */}
                 </div>
                 <br />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-    </div>
+        </div>
     )
 }

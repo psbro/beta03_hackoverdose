@@ -1,11 +1,64 @@
 
 
 import React from 'react'
+import { useState } from 'react';
+import "./form.css"
+
+
+import {
+    ref,
+    uploadBytesResumable, getDownloadURL
+} from "firebase/storage";
+import storage from '../../../firebase/firebaseConfig';
+
 
 export const DonorForm = () => {
+    const [file, setFile] = useState("");
+    const [imgurl,setimgurl]=useState('');
+
+    // progress
+    const [percent, setPercent] = useState(0);
+
+    // Handle file upload event and update state
+    function handleChange(event) {
+        setFile(event.target.files[0]);
+    }
+
+    const handleUpload = () => {
+        if (!file) {
+            alert("Please upload an image first!");
+        }
+
+        const storageRef = ref(storage, `/files/${file.name}`);
+
+        // progress can be paused and resumed. It also exposes progress updates.
+        // Receives the storage reference and the file to upload.
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const percent = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+
+                // update progress
+                setPercent(percent);
+            },
+            (err) => console.log(err),
+            () => {
+                // download url
+                getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                    setimgurl(url)
+                    console.log(url);
+                });
+            }
+        );
+    };
+
     return (
         <div className='donorForm'>
-            <form className='form-css'>
+            <div className='form-css'>
 
                 <div className="form-row">
                     <div className="form-group col-md-6">
@@ -24,7 +77,10 @@ export const DonorForm = () => {
                     </div>
 
                 </div>
-
+                {/* <div className="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+    </div> */}
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label> <br />
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                     <option selected>Choose...</option>
@@ -41,8 +97,8 @@ export const DonorForm = () => {
                     <div className="form-group col-md-6">
                         <label for="inputCity">City</label>
                         <input type="text" className="form-control" id="inputCity" />
-                    </div>
-                    <div className="form-group col-md-4">
+                    </div> 
+                 <div className="form-group col-md-4">
                         <label for="inputState">State</label>
                         <select id="inputState" className="form-control">
 
@@ -85,17 +141,39 @@ export const DonorForm = () => {
                             <option selected>Choose...</option>
                             <option>...</option>
                         </select>
-                    </div>
+<<<<<<< HEAD
+                    </div> 
                     <div className="form-group col-md-4">
                         <label for="inputZip">Upload your food image</label>
                         <input type="file" className="form-control" id="inputZip" />
+=======
+                    </div>
+                    <div>
+                        <input type="file" onChange={handleChange} accept="/image/*" />
+                        <button onClick={handleUpload}>Upload to Firebase</button>
+                        {/* <p>{percent} "% done"</p> */}
+                        
+
+                        {imgurl && <>
+                        <br />
+                        <br />
+                        <img className='image-height' src={imgurl} alt="" />
+                        
+                        </>}
+>>>>>>> b99847d9608b5c86efef4c00398fee0cb1ca96ce
                     </div>
 
 
                 </div>
                 <br />
-                <button type="submit" className="btn btn-primary">Submit</button>
+<<<<<<< HEAD
+                <button type="submit" className="btn btn-primary" onClick={handle}>Submit</button>
             </form>
-    </div>
+=======
+                <button type="submit" className="btn btn-primary" onClick={handleUpload}>Submit</button>
+            </div>
+
+>>>>>>> b99847d9608b5c86efef4c00398fee0cb1ca96ce
+        </div>
     )
 }

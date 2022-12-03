@@ -5,7 +5,7 @@ import React from 'react'
 export const DonorForm = () => {
     return (
         <div className='donorForm'>
-            <form className='form-css'>
+            <div className='form-css'>
 
                 <div className="form-row">
                     <div className="form-group col-md-6">
@@ -24,7 +24,10 @@ export const DonorForm = () => {
                     </div>
 
                 </div>
-
+                {/* <div className="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+    </div> */}
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label> <br />
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                     <option selected>Choose...</option>
@@ -41,8 +44,8 @@ export const DonorForm = () => {
                     <div className="form-group col-md-6">
                         <label for="inputCity">City</label>
                         <input type="text" className="form-control" id="inputCity" />
-                    </div>
-                    <div className="form-group col-md-4">
+                    </div> 
+                 <div className="form-group col-md-4">
                         <label for="inputState">State</label>
                         <select id="inputState" className="form-control">
 
@@ -96,6 +99,6 @@ export const DonorForm = () => {
                 <br />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-    </div>
+        </div>
     )
 }

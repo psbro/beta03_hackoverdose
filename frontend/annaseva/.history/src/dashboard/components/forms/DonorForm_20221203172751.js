@@ -96,6 +96,6 @@ export const DonorForm = () => {
                 <br />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-    </div>
+        </>
     )
 }
