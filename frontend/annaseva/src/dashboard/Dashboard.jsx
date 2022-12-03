@@ -5,6 +5,7 @@ const dashboard = () => {
   return (
     <div>
       <Home />
+      
     </div>
   )
 }

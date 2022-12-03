@@ -1,7 +1,7 @@
 
 const bcrypt = require('bcrypt')
 const User = require('../models/user');
-// const stringFunctions = require('../helpers/string_functions.js');
+const stringFunctions = require('../helpers/string_functions.js');
 // const Session = require("../models/session")
 // const sessionController = require("./sessionController");
 
@@ -15,7 +15,8 @@ module.exports.createUser = async (req, res) => {
 
             }
             catch (err) {
-                return res.status(409).json(err);
+                
+                return res.status(409).json(stringFunctions.formatDBErrors(err.errors));
             }
 }//end createUser
 
@@ -43,7 +44,7 @@ module.exports.loginUser = async (req, res) => {
                         return res.json([{"userNo":user.userNo}]); 
                     }
                     catch (err) {
-                        return res.status(409).json(err.errors);                        
+                        return res.status(409).json(stringFunctions.formatDBErrors(err.errors));                        
                     }
                 }
                 else {

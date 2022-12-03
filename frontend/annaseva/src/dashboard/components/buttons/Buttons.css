@@ -1,0 +1,13 @@
+.btn-button{
+    margin: auto;
+}
+.donorForm
+{
+    display: flex;
+    width: 60%;
+    margin: auto;
+}
+.donorForm form
+{
+    width: 100%;
+}
