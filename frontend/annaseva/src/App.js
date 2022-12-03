@@ -7,19 +7,21 @@ import {
 import Home from "./Home/Home";
 import Auth from './auth/Auth';
 import Dashboard from './dashboard/Dashboard';
+import Dashboard__user from './dashboard__user/Dashboard__user';
 
 
 const App = () => {
   return (
-    <div>
+    
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/dashboard/admin" element={<Dashboard />} />
+          <Route exact path="/dashboard/user" element={<Dashboard__user />} />
           <Route exact path="/auth" element={<Auth />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    
   )
 }
 
