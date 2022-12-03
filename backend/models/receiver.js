@@ -20,6 +20,8 @@ Receiver.init({
 longitude: {type: DataTypes.FLOAT,
    allowNull: false
 },
+location:{type:DataTypes.STRING(1000),allowNull:false},     
+
   type: {type: DataTypes.ENUM("Home_shelter","NGO","Other"), defaultValue: "Other"},        
 
   timestampCreated: { type: DataTypes.BIGINT, defaultValue: Date.now},
