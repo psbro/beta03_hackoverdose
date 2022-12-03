@@ -14,7 +14,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Modal_prop from '../modal/Modal_prop';
 
 
 
@@ -89,9 +88,24 @@ const TableX = () => {
                                         <TableCell className='tableCell'>{row.type}</TableCell>
                                         <TableCell className='tableCell'>{row.location}</TableCell>
                                         < TableCell className='tableCell'>
-                                            {/* <a href={row.link1} target="_blank">Photo</a>  */}
-                                            <Modal_prop link1={row.link1} />
-
+                                            {/* <a href={row.link1} target="_blank">Photo</a> */}
+                                            <Button onClick={handleOpen}>Photo</Button>
+                                            <Modal
+                                                open={open}
+                                                onClose={handleClose}
+                                                aria-labelledby="modal-modal-title"
+                                                aria-describedby="modal-modal-description"
+                                            >
+                                                <Box sx={style}>
+                                                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                        <p>{</p>
+                                                        <img src={row.link1} alt="row_img" style={{height: "50px" , width: ""}} />
+                                                    </Typography>
+                                                    <Button id="modal-modal-description" sx={{ mt: 2 }}>
+                                                        verify
+                                                    </Button>
+                                                </Box>
+                                            </Modal>
 
 
                                         </TableCell>

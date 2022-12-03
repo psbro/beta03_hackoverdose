@@ -14,7 +14,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Modal_prop from '../modal/Modal_prop';
 
 
 
@@ -89,9 +88,8 @@ const TableX = () => {
                                         <TableCell className='tableCell'>{row.type}</TableCell>
                                         <TableCell className='tableCell'>{row.location}</TableCell>
                                         < TableCell className='tableCell'>
-                                            {/* <a href={row.link1} target="_blank">Photo</a>  */}
-                                            <Modal_prop link1={row.link1} />
-
+                                            {/* <a href={row.link1} target="_blank">Photo</a> 
+                                            
 
 
                                         </TableCell>

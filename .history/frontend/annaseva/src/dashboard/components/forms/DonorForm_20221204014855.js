@@ -193,11 +193,7 @@ export const DonorForm = () => {
                         </select>
                     </div> */}
                     <div>
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Upload your food image</label> <br />
-
                         <input type="file" onChange={handleChange} accept="/image/*" />
-                        <br />
-                        <br />
                         <button onClick={handleUpload}>Upload to Firebase</button>
                         {/* <p>{percent} "% done"</p> */}
                         

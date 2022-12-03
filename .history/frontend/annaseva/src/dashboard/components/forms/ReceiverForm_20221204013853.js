@@ -12,7 +12,6 @@ export const ReceiverForm = () => {
     const [longitude,setlongitude]=useState(0)
     const [latitude,setlatitude]=useState(0)
     const [name,setname]=useState('');
-    const [address,setaddress]=useState('');
     const [quantity,setquantity]=useState(0);
     const [type,settype]=useState("Other");
     const locationfinder=()=>{
@@ -31,7 +30,6 @@ export const ReceiverForm = () => {
             type:type,
             latitude:latitude,
             longitude:longitude,
-            location:address,
             userNo:localStorage.getItem("userNo"),
             quantity:parseInt(quantity)
         }
@@ -62,15 +60,15 @@ export const ReceiverForm = () => {
                         <input type="number" className="form-control" id="inputPassword4" onChange={(event)=>setquantity(event.target.value)} placeholder="Quantity" />
                     </div>
                 </div>
-                <div className="form-group">
-                    <label for="inputAddress" onChange={(event)=>setaddress(event.target.value)}>Address</label>
+                {/* <div className="form-group">
+                    <label for="inputAddress">Address</label>
                     <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                </div> 
+                </div> */}
                 {/* <div className="form-group">
       <label for="inputAddress2">Address 2</label>
       <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
     </div> */}
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type</label> <br />
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label> <br />
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onChange={(event) => settype(event.target.value)}>
                     <option selected>Choose...</option>
                     <option value="Home_shelter">Home_shelter</option>

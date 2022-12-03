@@ -89,9 +89,9 @@ const TableX = () => {
                                         <TableCell className='tableCell'>{row.type}</TableCell>
                                         <TableCell className='tableCell'>{row.location}</TableCell>
                                         < TableCell className='tableCell'>
-                                            {/* <a href={row.link1} target="_blank">Photo</a>  */}
-                                            <Modal_prop link1={row.link1} />
-
+                                             {/* <a href={row.link1} target="_blank">Photo</a>  */}
+                                             <Modal_prop/>
+                                            
 
 
                                         </TableCell>

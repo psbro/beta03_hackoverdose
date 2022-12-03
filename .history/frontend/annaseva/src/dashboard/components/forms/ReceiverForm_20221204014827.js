@@ -70,7 +70,7 @@ export const ReceiverForm = () => {
       <label for="inputAddress2">Address 2</label>
       <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
     </div> */}
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type</label> <br />
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref"></label> <br />
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onChange={(event) => settype(event.target.value)}>
                     <option selected>Choose...</option>
                     <option value="Home_shelter">Home_shelter</option>

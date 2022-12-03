@@ -9,7 +9,7 @@ import Widget from '../../components/widgets/Widget'
 import './Home.scss'
 
 
-const Home = () => {
+const Home = ({link1}) => {
   return (
     <>
       <div className="home">

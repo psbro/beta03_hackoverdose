@@ -18,7 +18,7 @@ const navigate = useNavigate();
     }
     else if(isAdmin=="Yes")
     {
-      navigate("/dashboard/admin")
+      navigate("/dashboard/user")
     }
   
     },[])

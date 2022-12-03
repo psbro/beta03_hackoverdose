@@ -27,8 +27,6 @@ export const DonorForm = () => {
     const [name,setname]=useState('');
     const [quantity,setquantity]=useState(0);
     const [type,settype]=useState("Other");
-    const [address,setaddress]=useState('');
-
     
 
 
@@ -55,8 +53,7 @@ export const DonorForm = () => {
             link1:imgurl,
             latitude:latitude,
             longitude:longitude,
-            location:address,
-            userNo:localStorage.getItem("userNo"),
+            userNo:localStorage.getItem,
             quantity:parseInt(quantity)
         }
 
@@ -121,17 +118,12 @@ export const DonorForm = () => {
                         <input type="number" className="form-control" id="inputPassword4" onChange={(event)=>setquantity(event.target.value)} placeholder="Quantity" />
                     </div>
                 </div>
-                <div className="form-group">
-                    <label for="inputAddress" onChange={(event)=>setaddress(event.target.value)}>Address</label>
-                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                </div> 
-
                 
                 {/* <div className="form-group">
       <label for="inputAddress2">Address 2</label>
       <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
     </div> */}
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type</label> <br />
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label> <br />
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onChange={(event) => settype(event.target.value)}>
                     <option selected>Choose...</option>
                     <option value="Individual">Individual</option>
@@ -193,11 +185,7 @@ export const DonorForm = () => {
                         </select>
                     </div> */}
                     <div>
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Upload your food image</label> <br />
-
                         <input type="file" onChange={handleChange} accept="/image/*" />
-                        <br />
-                        <br />
                         <button onClick={handleUpload}>Upload to Firebase</button>
                         {/* <p>{percent} "% done"</p> */}
                         
