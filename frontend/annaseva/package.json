@@ -21,6 +21,7 @@
     "react-charts": "^2.0.0-beta.7",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
+    "react-google-location": "^1.2.2",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
