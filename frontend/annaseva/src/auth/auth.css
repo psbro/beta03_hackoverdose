@@ -5,3 +5,14 @@
     width: 80%;
     margin: auto;
 }
+.ripple{
+    border: 1px solid #b5aeae;
+    border-radius: 15px;
+    padding: 5px 12px;
+}
+.ripple:hover{
+    background-color: rgb(182, 178, 178);
+}
+.fab{
+    color:black;
+}
