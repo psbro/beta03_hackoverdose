@@ -8,26 +8,29 @@ Receiver.init({
   receiverNo: {type: DataTypes.INTEGER,primaryKey: true, autoIncrement: true},
   quantity:{type: DataTypes.INTEGER,allowNull: false},
   userNo:{type: DataTypes.INTEGER,allowNull: false},
+  donorNo:{type: DataTypes.INTEGER,allowNull: false, defaultValue:0},
   name: {type: DataTypes.STRING(500),
           allowNull: false, 
           unique: true
    },
-  type: {type: DataTypes.ENUM("Home_shelter","Ngo","Other"), defaultValue: "Other"},        
-
-  location: {type: DataTypes.STRING(100),
-             allowNull: false
-          },
+   
+  latitude: {type: DataTypes.FLOAT,
+    allowNull: false
+ },
+longitude: {type: DataTypes.FLOAT,
+   allowNull: false
+},
+  type: {type: DataTypes.ENUM("Home_shelter","NGO","Other"), defaultValue: "Other"},        
 
   timestampCreated: { type: DataTypes.BIGINT, defaultValue: Date.now},
 
   name: { type: DataTypes.STRING(100), 
-          allowNull:false
-          
+          allowNull:false    
          },  
-
   timestampExpiry: { type: DataTypes.BIGINT, defaultValue: Date.now},
   isVerify: {type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"},        
-  isReceived: {type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"}       
+  isReceived: {type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"},
+ 
 
 },{ 
     
