@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 import './auth.css'
 import {
   MDBContainer,
@@ -54,14 +56,72 @@ function Auth() {
     setJustifyActive(value);
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = async(e) => {
+    
+   if(signUpstate.up_cpassword!=signUpstate.up_password)
+    {
+      alert("password and conform password should we same")
+    }
+    else if(signUpstate.up_password.length<8)
+    {
+      alert("password length should we greater then 8")
+    }
+    else{
+      let data={
+        email:signUpstate.up_email,
+        password:signUpstate.up_password,
+        name:signUpstate.up_name,
+        mobile:signUpstate.up_mobile
+  
+      } 
+      
+        let info = await axios.post(`http://localhost:8000/users/create`,data).then((data)=>{
+    
+          alert("Register sucessfull")
 
-    console.log(signUpstate)
+        }).catch(function (error) {
+          if (error.response.status==409) {
+            alert(error.response.data[0].errorMessage);
+          }
+        });
+      
+
+    }
+    
+
+
   }
 
-  const handleSignin = (e) => {
+  const handleSignin = async(e) => {
    
    console.log(signInstate)
+    if(signInstate.in_password.length<8)
+    {
+      alert("password length should we greater then 8")
+    }
+    else{
+      let data={
+        email:signInstate.in_email,
+        password:signInstate.in_password,
+  
+      }
+    
+        let info =await axios.post(`http://localhost:8000/users/login`,data).then((data)=>{
+          alert(data);
+          alert("Login sucessfull")
+
+        }).catch(function (error) {
+          if (error.response.status==409) {
+            alert(error.response.data[0].errorMessage);
+    
+          }
+        });
+       
+
+      
+      
+
+    }
   }
 
   return (
