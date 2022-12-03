@@ -15,6 +15,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+import Button from '@mui/material/Button';
+
+
+import Button from '@mui/material/Button';
 
 
 
@@ -38,6 +42,7 @@ const TableX = () => {
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
 
+   
     const [data, setData] = React.useState([]);
     const handleupdate= async (data)=>{
         let long = {
@@ -87,14 +92,11 @@ const TableX = () => {
 
                                 <TableCell className='tableCell'>{row.type}</TableCell>
                                 <TableCell className='tableCell'>{row.location}</TableCell>
-                                < TableCell className='tableCell'>
-                                    <a href={row.link1} target="_blank">Photo</a>
-                                    
-                                
-                                </TableCell>
                                 <TableCell className='tableCell'>
-                                    {row.isVerify == "No" && <Button onClick={()=>handleupdate(row.donorNo)}>Verify</Button>}
-                                    {row.isVerify == "Yes" && <span className={`status Approved`}>Approved</span>}
+                                    <a href={row.link1} target="_blank">Photo</a></TableCell>
+                                <TableCell className='tableCell'>
+                                    {row.isVerify=="No" && <Button onClick={()=>handleupdate(row.donorNo)}>Verify</Button>}
+                                    {row.isVerify=="Yes" && <span className={`status Approved`}>Approved</span>}
                                    
                                 </TableCell>
                                     </>

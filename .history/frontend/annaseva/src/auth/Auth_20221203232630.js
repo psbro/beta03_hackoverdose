@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
-import "./auth.css";
+
+import './auth.css'
 import {
   MDBContainer,
   MDBTabs,

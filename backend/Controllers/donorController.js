@@ -37,7 +37,7 @@ module.exports.updateDonor = async (req, res) => {
 
     //Create a new user
     try {
-     let donor = await Donor.update(req.body,{where:{donorNo:req.body.donorNO}});
+     let donor = await Donor.update(req.body,{where:{donorNo:req.body.donorNo}});
     return res.json(donor);
 
     }

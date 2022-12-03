@@ -27,18 +27,19 @@ Donor.init({
           allowNull:false
           
          },
-  link1:{type:DataTypes.STRING(1000),allowNull:true} ,      
-
+  link1:{type:DataTypes.STRING(1000),allowNull:false} ,      
+  location:{type:DataTypes.STRING(1000),allowNull:false},     
   timestampExpiry: { type: DataTypes.BIGINT, defaultValue: Date.now},
   isVerify: {type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"},        
-  isDelivered: {type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"}       
+  isDelivered: {type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"},       
+  isDonate: {type: DataTypes.ENUM("Yes","No"), defaultValue: "NO"}       
 
-},{ 
-    
+},{   
+     
   sequelize, // We need to pass the connection instance
   timestamps: false, 
-  tableName: 'donors'
+  // tableName: 'donors'
 }); 
 
-// Donor.sync({ alter: true })
+Donor.sync({ alter: true })
 module.exports = Donor;  

@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+import Button from '@mui/material/Button';
 
 
 
@@ -38,6 +39,7 @@ const TableX = () => {
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
 
+   
     const [data, setData] = React.useState([]);
     const handleupdate= async (data)=>{
         let long = {
@@ -87,15 +89,41 @@ const TableX = () => {
 
                                 <TableCell className='tableCell'>{row.type}</TableCell>
                                 <TableCell className='tableCell'>{row.location}</TableCell>
-                                < TableCell className='tableCell'>
+                                <TableCell className='tableCell'>
+<<<<<<< HEAD
                                     <a href={row.link1} target="_blank">Photo</a>
                                     
+                                        {/* <Button onClick={handleOpen}>Photo</Button>
+                                        <Modal
+                                            open={open}
+                                            onClose={handleClose}
+                                            aria-labelledby="modal-modal-title"
+                                            aria-describedby="modal-modal-description"
+                                        >
+                                            <Box sx={style}>
+                                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                    <div>
+                                                        
+                                                        <img  style={{height:"500px"}}src={row.link1} alt="" />
+                                                    </div>
+                                                
+                                                </Typography>
+                                                
+                                            </Box>
+                                        </Modal> */}
                                 
                                 </TableCell>
                                 <TableCell className='tableCell'>
-                                    {row.isVerify == "No" && <Button onClick={()=>handleupdate(row.donorNo)}>Verify</Button>}
+                                    {row.isVerify == "No" && <span className={`status Pending`}>Pending</span>}
                                     {row.isVerify == "Yes" && <span className={`status Approved`}>Approved</span>}
+                                    {/* <span className={`status Pending`}>{row.isVerify}</span> */}
+=======
+                                    <a href={row.link1} target="_blank">Photo</a></TableCell>
+                                <TableCell className='tableCell'>
+                                    {row.isVerify=="No" && <Button onClick={()=>handleupdate(row.donorNo)}>Verify</Button>}
+                                    {row.isVerify=="Yes" && <span className={`status Approved`}>Approved</span>}
                                    
+>>>>>>> bfda09b159fb505a8567cb72fcb8544ad9d3861c
                                 </TableCell>
                                     </>
                                 }

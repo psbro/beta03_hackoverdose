@@ -35,7 +35,12 @@ const TableX = (props) => {
             receiverNo: data,
             donorNo: props.donorNo
         }
+        let long1 = {
+            isDonate: "Yes",
+            donorNo: props.donorNo
+        }
         let info = await axios.put(`http://localhost:8000/receiver/update`, long);
+        let info2 = await axios.put(`http://localhost:8000/donor/update`, long1);
         alert("updated sucessfully")
         window.location.reload();
 
