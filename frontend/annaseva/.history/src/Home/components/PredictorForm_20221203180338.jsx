@@ -24,30 +24,32 @@ export default function PredictorForm() {
     })
   }
 
-const handleapi = async () => {
-  let data1 = 1;
-  let data2 = 1;
+  const handleapi = async (e) => {
+    let data1 = 1;
+    let data2 = 1;
 
-  if(predictState.email_for_promotion == 'No'){
-   data1 = 0;
-  }
-
-  if(predictState.homepage_featured == 'No'){
-    data2 = 0;
-  }
-
-  let data = [predictState.centre_id , predictState.meal_id,predictState.checkout_price,predictState.base_price,data1,data2]
-
-  let info = await axios.post(`http://localhost:8000/users/create`,data).then((data)=>{
-    
-    
-
-  }).catch(function (error) {
-    if (error.response.status==409) {
-      alert(error.response.data[0].errorMessage);
+    if (predictState.email_for_promotion == 'No') {
+      data1 = 0;
     }
-  });
-}
+
+    if (predictState.homepage_featured == 'No') {
+      data2 = 0;
+    }
+
+    let data = [predictState.centre_id, predictState.meal_id, predictState.checkout_price, predictState.base_price, data1, data2]
+
+
+
+    let info = await axios.post(`https://predictor.devanshkapri2.repl.co/predict`, data).then((val) => {
+
+      meals__recommended = Math.ceil(val.data)
+       setMeals(meals__recommended)
+
+
+    }).catch(function (error) {
+      console.log(error)
+    });
+  }
  
    
     return (
