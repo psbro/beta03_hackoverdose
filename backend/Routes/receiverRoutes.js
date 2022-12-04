@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const express = require("express");
 
-receiverController = require ("../controllers/receiverController");
+receiverController = require ("../Controllers/receiverController");
 
 const router = express.Router();
 
