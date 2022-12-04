@@ -69,9 +69,9 @@ const TableX = () => {
                         <TableRow>
                             <TableCell className='tableCell'>UserNo</TableCell>
                             <TableCell className='tableCell'>Name</TableCell>
-                            <TableCell className='tableCell'>quantity</TableCell>
-                            <TableCell className='tableCell'>type</TableCell>
-                            <TableCell className='tableCell'>location</TableCell>
+                            <TableCell className='tableCell'>Quantity</TableCell>
+                            <TableCell className='tableCell'>Type</TableCell>
+                            <TableCell className='tableCell'>Location</TableCell>
                             <TableCell className='tableCell'>Food photo</TableCell>
                             {/* <TableCell className='tableCell'>Payment Method</TableCell> */}
                             <TableCell className='tableCell'>Status</TableCell>

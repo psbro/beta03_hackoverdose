@@ -55,7 +55,7 @@ const Main_components = () => {
             <button className="btn1">
               <ScrollLink
                 className="scroll"
-                to="section4"
+                to="section1"
                 spy={true}
                 smooth={true}
                 duration={500}

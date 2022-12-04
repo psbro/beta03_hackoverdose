@@ -40,7 +40,7 @@ const Nav2 = () => {
             </li>
             <li>
               <ScrollLink to="section2" spy={true} smooth={true} duration={500}>
-                GALLERY
+                OUR AIM
               </ScrollLink>
             </li>
             <li>
@@ -61,7 +61,7 @@ const Nav2 = () => {
             </li>
             <li>
               <Link className="blog-btn" to="auth">
-                Login / Signup
+                LOGIN / SIGNUP
               </Link>
             </li>
           </ul>
@@ -69,7 +69,6 @@ const Nav2 = () => {
 
         {/* 3rd social media links */}
         <div className="social-media">
-          
           {/* hamburget menu start  */}
           <div className="hamburger-menu">
             <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
