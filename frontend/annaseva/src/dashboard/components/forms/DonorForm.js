@@ -50,7 +50,7 @@ export const DonorForm = () => {
     };
 
     axios
-      .post("http://localhost:8000/donor/create", data)
+      .post("http://34.70.31.162/donor/create", data)
       .then((response) => {
         console.log(response.data.donorNo);
         setdonorNo(response.data.donorNo);

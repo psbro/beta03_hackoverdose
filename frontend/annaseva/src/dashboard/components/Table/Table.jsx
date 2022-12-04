@@ -20,7 +20,7 @@ const TableX = (props) => {
       latitude: props.latitude,
     };
     let info = await axios.post(
-      `http://localhost:8000/donor/getreceiver`,
+      `http://34.70.31.162/donor/getreceiver`,
       long
     );
     setData(info.data);
@@ -37,8 +37,8 @@ const TableX = (props) => {
       isDonate: "Yes",
       donorNo: props.donorNo,
     };
-    let info = await axios.put(`http://localhost:8000/receiver/update`, long);
-    let info2 = await axios.put(`http://localhost:8000/donor/update`, long1);
+    let info = await axios.put(`http://34.70.31.162/receiver/update`, long);
+    let info2 = await axios.put(`http://34.70.31.162/donor/update`, long1);
     alert("Donation request sent!");
     window.location.reload();
   };

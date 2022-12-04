@@ -76,7 +76,7 @@ function Auth() {
       };
 
       let info = await axios
-        .post(`http://localhost:8000/users/create`, data)
+        .post(`http://34.70.31.162/users/create`, data)
         .then((data) => {
           alert("Register sucessfull");
         })
@@ -99,7 +99,7 @@ function Auth() {
       };
 
       let info = await axios
-        .post(`http://localhost:8000/users/login`, data)
+        .post(`http://34.70.31.162/users/login`, data)
         .then((response) => {
           
           localStorage.setItem("userNo",response.data.userNo);

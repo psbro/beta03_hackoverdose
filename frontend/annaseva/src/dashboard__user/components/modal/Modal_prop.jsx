@@ -45,8 +45,8 @@ const Modal_prop = (props) => {
     };
 
     try {
-      let info = await axios.put(`http://localhost:8000/donor/update`, long);
-      let info2 = await axios.post(`http://localhost:8000/users/whatapp`, {
+      let info = await axios.put(`http://34.70.31.162/donor/update`, long);
+      let info2 = await axios.post(`http://34.70.31.162/users/whatapp`, {
         location: props.location,
       });
       alert("updated sucessfully");

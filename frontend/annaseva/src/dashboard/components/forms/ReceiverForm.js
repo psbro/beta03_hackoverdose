@@ -31,7 +31,7 @@ export const ReceiverForm = () => {
     };
 
     axios
-      .post("http://localhost:8000/receiver/create", data)
+      .post("http://34.70.31.162/receiver/create", data)
       .then((data) => {
         console.log(data);
         alert("request submited");

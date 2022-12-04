@@ -45,13 +45,13 @@ const TableX = () => {
             donorNo: data,
             isVerify: "Yes"
         }
-        let info = await axios.put(`http://localhost:8000/donor/update`, long);
+        let info = await axios.put(`http://34.70.31.162/donor/update`, long);
         alert("updated sucessfully")
         window.location.reload();
 
     }
     const loadData = async () => {
-        let info = await axios.get(`http://localhost:8000/donor/all`);
+        let info = await axios.get(`http://34.70.31.162/donor/all`);
         setData(info.data);
         console.log(data)
     }
